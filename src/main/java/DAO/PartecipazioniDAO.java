@@ -21,8 +21,8 @@ public class PartecipazioniDAO {
         System.out.println("la partecipazione con id:" + newPartecipazione.getId() + " è stata salvata correttamente nel db");
     }
 
-    public Partecipazione findById(UUID partecipazioneId) throws Exception {
-        Partecipazione found = entityManager.find(Partecipazione.class, partecipazioneId);
+    public Partecipazione findById(String partecipazioneId) throws Exception {
+        Partecipazione found = entityManager.find(Partecipazione.class, UUID.fromString(partecipazioneId));
         if (found == null) throw new Exception(String.valueOf(partecipazioneId));
         return found;
     }

@@ -10,7 +10,6 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class Application {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("w14d3");
@@ -42,8 +41,8 @@ public class Application {
         //pd.save(partecipazione1);
         Partecipazione partecipazione2 = new Partecipazione(persona2, festa, StatoPartecipazione.DA_CONFERMARE);
         //pd.save(partecipazione2);
-        Partecipazione concertofromDb = pd.findById(UUID.fromString("b06ba21f-6ac8-45ee-956a-d8f428c9d129"));
-        concertofromDb.getPersona().forEach(System.out::println);
+        Partecipazione concertofromDb = pd.findById("b06ba21f-6ac8-45ee-956a-d8f428c9d129");
+        System.out.println(concertofromDb.getPersona());
 
         em.close();
         emf.close();
