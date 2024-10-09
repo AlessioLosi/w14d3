@@ -4,6 +4,8 @@ import Entities.Partecipazione;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.util.UUID;
+
 public class PartecipazioniDAO {
     private final EntityManager entityManager;
 
@@ -19,7 +21,7 @@ public class PartecipazioniDAO {
         System.out.println("la partecipazione con id:" + newPartecipazione.getId() + " è stata salvata correttamente nel db");
     }
 
-    public Partecipazione findById(long partecipazioneId) throws Exception {
+    public Partecipazione findById(UUID partecipazioneId) throws Exception {
         Partecipazione found = entityManager.find(Partecipazione.class, partecipazioneId);
         if (found == null) throw new Exception(String.valueOf(partecipazioneId));
         return found;

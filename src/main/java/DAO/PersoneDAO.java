@@ -4,6 +4,8 @@ import Entities.Persona;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.util.UUID;
+
 public class PersoneDAO {
     private final EntityManager entityManager;
 
@@ -19,7 +21,7 @@ public class PersoneDAO {
         System.out.println("la persona" + newPersona.nome() + " è stato salvato correttamente nel db");
     }
 
-    public Persona findById(long personaId) throws Exception {
+    public Persona findById(UUID personaId) throws Exception {
         Persona found = entityManager.find(Persona.class, personaId);
         if (found == null) throw new Exception(String.valueOf(personaId));
         return found;
